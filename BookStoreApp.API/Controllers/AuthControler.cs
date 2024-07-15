@@ -33,6 +33,7 @@ namespace BookStoreApp.API.Controllers
         public async Task<IActionResult> Register([FromBody] UserDto userDto)
         {
             var user = mapper.Map<ApiUser>(userDto);
+            user.UserName = userDto.Email;
             var result = await userManager.CreateAsync(user, userDto.Password);
 
             if (!result.Succeeded)
@@ -46,7 +47,7 @@ namespace BookStoreApp.API.Controllers
 
             await userManager.AddToRoleAsync(user, "User");
 
-            return Accepted();
+            return Ok();
         }
 
         [HttpPost("login")]

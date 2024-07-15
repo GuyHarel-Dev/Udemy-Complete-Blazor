@@ -11,7 +11,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddHttpClient();
 
 builder.Services.AddSingleton<WeatherForecastService>();
-builder.Services.AddSingleton <BookStoreApiClientFactory>() ;
+builder.Services.AddSingleton<BookStoreApiClientFactory>() ;
 
 var app = builder.Build();
 
