@@ -2,7 +2,9 @@ using Blazored.LocalStorage;
 using BookStoreApp.Blazor.Server.UI.Data;
 using BookStoreApp.Services;
 using BookStoreApp.Services.Interfaces;
+using BookStoreApp.Services.Providers;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSingleton<BookStoreApiClientFactory>() ;
 builder.Services.AddScoped<IBookStoreAuthService, BookStoreAuthService>();
+builder.Services.AddScoped<AuthenticationStateProvider>( o => o.GetRequiredService<ApiAuthenticationStateProvider>());
 
 var app = builder.Build();
 
