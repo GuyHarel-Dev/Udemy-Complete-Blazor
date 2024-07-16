@@ -49,8 +49,9 @@ namespace BookStoreApp.Services.Providers
             NotifyAuthenticationStateChanged(authState);
         }
 
-        public void LoggedOut()
+        public async Task LoggedOut()
         {
+            await localStorage.RemoveItemAsync("accessToken");
             var authState = Task.FromResult(new AuthenticationState(userNotLoggedIn));
             NotifyAuthenticationStateChanged(authState);
         }

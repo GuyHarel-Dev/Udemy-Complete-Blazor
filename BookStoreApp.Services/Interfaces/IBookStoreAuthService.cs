@@ -9,5 +9,6 @@ namespace BookStoreApp.Services.Interfaces
     public interface IBookStoreAuthService
     {
         Task<bool> AuthenticateAsync(LoginUserDto loginUserDto);
+        Task Logout();
     }
 }

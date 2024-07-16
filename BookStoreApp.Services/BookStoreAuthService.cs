@@ -41,5 +41,10 @@ namespace BookStoreApp.Services
             return true;
 
         }
+
+        public async Task Logout()
+        {
+            await ((ApiAuthenticationStateProvider)authenticationStateProvider).LoggedOut();
+        }
     }
 }
