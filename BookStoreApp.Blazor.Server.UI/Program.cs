@@ -6,6 +6,7 @@ using BookStoreApp.Services.Providers;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
+using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,9 @@ builder.Services.AddHttpClient();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSingleton<BookStoreApiClientFactory>() ;
 builder.Services.AddScoped<IBookStoreAuthService, BookStoreAuthService>();
+
+builder.Services.AddSingleton<JwtSecurityTokenHandler>();
+builder.Services.AddScoped<ApiAuthenticationStateProvider>();
 builder.Services.AddScoped<AuthenticationStateProvider>( o => o.GetRequiredService<ApiAuthenticationStateProvider>());
 
 var app = builder.Build();
