@@ -10,4 +10,16 @@
     <ProjectReference Include="..\BookStoreApp.Services\BookStoreApp.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Users\Login.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Users\Login.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
+  </ItemGroup>
+
 </Project>

@@ -5,11 +5,11 @@ VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStoreApp.API", "BookStoreApp.API\BookStoreApp.API.csproj", "{DEC8A46B-414E-45F0-B3A3-241BCA13006C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStoreApp.Blazor.Server.UI", "BookStoreApp.Blazor.Server.UI\BookStoreApp.Blazor.Server.UI.csproj", "{F9216E31-59C0-49C6-864B-EECE82EC8076}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStoreApp.Blazor.Server.UI", "BookStoreApp.Blazor.Server.UI\BookStoreApp.Blazor.Server.UI.csproj", "{F9216E31-59C0-49C6-864B-EECE82EC8076}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStoreApp.Models", "BookStoreApp.Models\BookStoreApp.Models.csproj", "{D4E9D99A-955B-45BF-83CF-0271F687FED3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStoreApp.Models", "BookStoreApp.Models\BookStoreApp.Models.csproj", "{D4E9D99A-955B-45BF-83CF-0271F687FED3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStoreApp.Services", "BookStoreApp.Services\BookStoreApp.Services.csproj", "{60ED7537-92A1-4275-91E6-D072F23DD400}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStoreApp.Services", "BookStoreApp.Services\BookStoreApp.Services.csproj", "{60ED7537-92A1-4275-91E6-D072F23DD400}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
