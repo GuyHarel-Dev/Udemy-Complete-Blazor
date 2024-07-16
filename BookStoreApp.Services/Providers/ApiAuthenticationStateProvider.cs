@@ -59,7 +59,7 @@ namespace BookStoreApp.Services.Providers
         private async Task<JwtSecurityToken?> GetSavedToken(string tokenName)
         {
             // Obtenir le token du fureteur
-            var savedToken = await localStorage.GetItemAsStringAsync(tokenName);
+            var savedToken = await localStorage.GetItemAsync<string>(tokenName);
 
             if (savedToken == null)
                 return null;
