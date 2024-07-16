@@ -5,6 +5,7 @@
 @using BookStoreApp.Services.Interfaces
 
 @inject IBookStoreAuthService authService
+@inject NavigationManager navManager
 
 <h3>Login</h3>
 @if (!string.IsNullOrEmpty(message))
@@ -50,6 +51,13 @@
         try
         {
             var response = await authService.AuthenticateAsync(LoginModel);
+
+            if (response)
+            {
+                navManager.NavigateTo("/");
+            }
+
+            message = "Invalid Credentials, Please Try Again";
         }
         catch (ApiException ex)
         {

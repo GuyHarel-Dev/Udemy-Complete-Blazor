@@ -72,9 +72,11 @@ namespace BookStoreApp.Services.Providers
 
         private ClaimsPrincipal CreateUserClaimPrincipal(JwtSecurityToken jwtSecurityToken)
         {
-            var claims = jwtSecurityToken.Claims;
+            var claims = jwtSecurityToken.Claims.ToList();
+            claims.Add(new Claim(ClaimTypes.Name, jwtSecurityToken.Subject));
             var user = new ClaimsPrincipal(new ClaimsIdentity(claims, "jwt")); // le "jwt" indique que les claims proviennent de l'auth Jwt
             return user;
         }
+
     }
 }
