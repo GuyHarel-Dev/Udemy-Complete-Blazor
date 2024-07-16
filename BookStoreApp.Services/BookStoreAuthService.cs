@@ -26,6 +26,7 @@ namespace BookStoreApp.Services
             var reponse = await apiClient.LoginAsync(loginUserDto);
 
             // Store token
+            await localStorage.SetItemAsync("accessToken", reponse.Token);
 
             // Change auth state of the app (to know that an authenticated user is present)
 
