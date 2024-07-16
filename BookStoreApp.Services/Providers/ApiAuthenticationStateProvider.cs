@@ -56,10 +56,13 @@ namespace BookStoreApp.Services.Providers
             NotifyAuthenticationStateChanged(authState);
         }
 
-        private async Task<JwtSecurityToken> GetSavedToken(string tokenName)
+        private async Task<JwtSecurityToken?> GetSavedToken(string tokenName)
         {
             // Obtenir le token du fureteur
             var savedToken = await localStorage.GetItemAsStringAsync(tokenName);
+
+            if (savedToken == null)
+                return null;
 
             // Parser le token
             var tokenContent = jwtSecurityTokenHandler.ReadJwtToken(savedToken);

@@ -7,6 +7,12 @@
 @inject IBookStoreAuthService authService
 
 <h3>Login</h3>
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="alert alert-danger">
+        <p>@message</p>
+    </div>
+}
 
 <div>
 
@@ -31,8 +37,12 @@
 </div>
 
 @code {
+    LoginUserDto LoginModel = new LoginUserDto
+        {
+            Email = "bibi@coco.com",
+            Password = "fWY0YB1D_0RdJJcZ"
+        };
 
-    LoginUserDto LoginModel = new LoginUserDto();
     string message = string.Empty;
 
     public async Task HandleLogin()
