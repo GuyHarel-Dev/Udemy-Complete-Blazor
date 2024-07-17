@@ -8,6 +8,8 @@ namespace BookStoreApp.Services.Interfaces
 {
     public interface IBookStoreAuthService
     {
+        BookStoreAppApiClient GetApiHttpClient();
+
         Task<bool> AuthenticateAsync(LoginUserDto loginUserDto);
         Task Logout();
     }

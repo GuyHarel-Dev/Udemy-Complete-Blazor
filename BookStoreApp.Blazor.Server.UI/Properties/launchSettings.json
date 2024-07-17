@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "BookStoreApp.Blazor.Server.UI": {
+    "https": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
