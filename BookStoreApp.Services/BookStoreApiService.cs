@@ -11,15 +11,15 @@ using Microsoft.AspNetCore.Components.Authorization;
 
 namespace BookStoreApp.Services
 {
-    public class BookStoreAuthService : IBookStoreAuthService
+    public class BookStoreApiService : IBookStoreApiService
     {
         private readonly BookStoreApiClientFactory factory;
-        private readonly BookStoreAppApiClient apiClient
+        private readonly BookStoreAppApiClient apiClient;
         private readonly ILocalStorageService localStorage;
         private readonly AuthenticationStateProvider authenticationStateProvider;
         private const string TOKEN_NAME = "accessToken";
 
-        public BookStoreAuthService(
+        public BookStoreApiService(
             BookStoreApiClientFactory factory, 
             ILocalStorageService localStorage,
             AuthenticationStateProvider authenticationStateProvider)

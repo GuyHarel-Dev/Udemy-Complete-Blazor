@@ -7,9 +7,6 @@ using System.Threading.Tasks;
 
 namespace BookStoreApp.Services
 {
-    //public partial interface IBookStoreAppApiClient
-    //{
-    //}
 
     public partial class BookStoreAppApiClient
     {

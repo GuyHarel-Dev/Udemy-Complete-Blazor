@@ -18,9 +18,10 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSingleton<BookStoreApiClientFactory>() ;
-builder.Services.AddScoped<IBookStoreAuthService, BookStoreAuthService>();
-
 builder.Services.AddSingleton<JwtSecurityTokenHandler>();
+
+builder.Services.AddScoped<IBookStoreApiService, BookStoreApiService>();
+builder.Services.AddScoped<IAuthorService, AuthorService>(); 
 builder.Services.AddScoped<ApiAuthenticationStateProvider>();
 builder.Services.AddScoped<AuthenticationStateProvider>( o => o.GetRequiredService<ApiAuthenticationStateProvider>());
 

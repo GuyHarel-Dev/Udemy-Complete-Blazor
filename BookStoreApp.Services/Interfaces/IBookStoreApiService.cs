@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreApp.Services.Interfaces
 {
-    public interface IBookStoreAuthService
+    public interface IBookStoreApiService
     {
         BookStoreAppApiClient GetApiHttpClient();
 
