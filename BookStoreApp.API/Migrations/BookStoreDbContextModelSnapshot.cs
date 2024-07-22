@@ -97,37 +97,37 @@ namespace BookStoreApp.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1",
+                            Id = "8e448afa-f008-446e-a52f-13c449803c2e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0b6ee947-f373-483a-85a5-66e1106d744e",
+                            ConcurrencyStamp = "d5dc8562-14de-4cfd-a5d1-9b1fc0508625",
                             Email = "admin@bookstore.com",
-                            EmailConfirmed = true,
+                            EmailConfirmed = false,
                             FirstName = "System",
                             LastName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@BOOKSTORE.COM",
                             NormalizedUserName = "ADMIN@BOOKSTORE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEN7R8f7GnZ5lKGIMh8/kTfmHIFkrGIb9pc3pvmAS53cYBKhVB6yLL8qUqvdG78RlBA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAjZn4Fb0tPrNqKO32+JmFb7LZKe5wl4+d5g2EZRpYPWNDacCejTB+Uo+NCptNMECw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
+                            SecurityStamp = "ca1add55-aa77-4b76-8368-7797452af49b",
                             TwoFactorEnabled = false,
                             UserName = "admin@bookstore.com"
                         },
                         new
                         {
-                            Id = "2",
+                            Id = "30a24107-d279-4e37-96fd-01af5b38cb27",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b7c74476-16b7-4ff6-81e5-eb0e0b582be7",
+                            ConcurrencyStamp = "82291075-830c-46f7-8913-1566e192a2fb",
                             Email = "user@bookstore.com",
-                            EmailConfirmed = true,
+                            EmailConfirmed = false,
                             FirstName = "System",
                             LastName = "User",
                             LockoutEnabled = false,
-                            NormalizedEmail = "USER@BOOKSTORE.COM\"",
+                            NormalizedEmail = "USER@BOOKSTORE.COM",
                             NormalizedUserName = "USER@BOOKSTORE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEH6YwuRyejvNxaacD+7wJEJCB0ffJ/8jycPD4YU5a/bvfJHoxGxUHob2L3HR+nUVyA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHrFlZLlQk3tyrQx4zyHQgV3dxrT7za7kd7VK6onW6SRrAM/Lh5DNOCcOM4ZZSI/rQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
+                            SecurityStamp = "b83b33db-70fc-4472-8f07-a3813a33bef1",
                             TwoFactorEnabled = false,
                             UserName = "user@bookstore.com"
                         });
@@ -153,8 +153,7 @@ namespace BookStoreApp.API.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("Id")
-                        .HasName("PK__Authors__3214EC07AC7CD9C7");
+                    b.HasKey("Id");
 
                     b.ToTable("Authors");
                 });
@@ -171,8 +170,8 @@ namespace BookStoreApp.API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Image")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("Isbn")
                         .HasMaxLength(50)
@@ -193,10 +192,13 @@ namespace BookStoreApp.API.Migrations
                     b.Property<int?>("Year")
                         .HasColumnType("int");
 
-                    b.HasKey("Id")
-                        .HasName("PK__Books__3214EC07AC7CD9C7");
+                    b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
+
+                    b.HasIndex(new[] { "Isbn" }, "UQ__Books__447D36EA09FAB742")
+                        .IsUnique()
+                        .HasFilter("[ISBN] IS NOT NULL");
 
                     b.ToTable("Books");
                 });
@@ -230,15 +232,15 @@ namespace BookStoreApp.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
+                            Id = "8343074e-8623-4e1a-b0c1-84fb8678c8f3",
+                            Name = "User",
+                            NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "2",
-                            Name = "User",
-                            NormalizedName = "USER"
+                            Id = "c7ac6cfe-1f10-4baf-b604-cde350db9554",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
                         });
                 });
 
@@ -331,13 +333,13 @@ namespace BookStoreApp.API.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "1",
-                            RoleId = "1"
+                            UserId = "30a24107-d279-4e37-96fd-01af5b38cb27",
+                            RoleId = "8343074e-8623-4e1a-b0c1-84fb8678c8f3"
                         },
                         new
                         {
-                            UserId = "2",
-                            RoleId = "2"
+                            UserId = "8e448afa-f008-446e-a52f-13c449803c2e",
+                            RoleId = "c7ac6cfe-1f10-4baf-b604-cde350db9554"
                         });
                 });
 

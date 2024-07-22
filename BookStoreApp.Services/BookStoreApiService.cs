@@ -55,6 +55,16 @@ namespace BookStoreApp.Services
                 };
             }
 
+            if (exception != null &&  exception.StatusCode == 401)
+            {
+                return new Response<T>() { Message = "Invalid Credentials, Please Try Again", Success = false };
+            }
+
+            if (exception != null &&  exception.StatusCode >= 200 && exception.StatusCode <= 299)
+            {
+                return new Response<T>() { Message = "Operation Reported Success", Success = true };
+            }
+
             return new Response<T>()
             {
                 Message = "Something went wrong.",
