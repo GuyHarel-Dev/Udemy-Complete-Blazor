@@ -83,17 +83,15 @@ namespace BookStoreApp.API.Controllers
 
             var userClaims = await userManager.GetClaimsAsync(user);
 
-            var claims = new List<Claim>  // who you are what you can do
+            var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(CustomClaimTypes.Uid, user.Id)
-            };
-
-            claims
-                .Union(roleClaims)
-                .Union(userClaims);
+            }
+            .Union(userClaims)
+            .Union(roleClaims);
 
             var token = new JwtSecurityToken(
                 issuer: configuration["JwtSettings:Issuer"],
