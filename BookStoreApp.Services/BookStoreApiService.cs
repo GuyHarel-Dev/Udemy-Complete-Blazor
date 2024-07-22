@@ -64,7 +64,7 @@ namespace BookStoreApp.Services
 
         public async Task GetBearerToken()
         {
-            var token = await localStorage.GetItemAsStringAsync(TOKEN_NAME);
+            var token = await localStorage.GetItemAsync<string>(TOKEN_NAME);
             if (token != null)
             {
                 apiClient.HttpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);

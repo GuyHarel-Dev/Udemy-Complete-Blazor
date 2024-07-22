@@ -29,7 +29,7 @@ namespace BookStoreApp.Services
 
             try
             {
-                var client = factory.CreateApiClient();
+                var client = GetApiHttpClient();
 
                 await GetBearerToken();
                 var data = await client.AuthorsAllAsync();
