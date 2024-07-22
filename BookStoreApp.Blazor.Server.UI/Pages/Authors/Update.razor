@@ -1,4 +1,4 @@
-﻿@page "/authors/update/{Id}"
+﻿@page "/authors/update/{Id:int}"
 
 @using BookStoreApp.Services
 @using BookStoreApp.Services.Interfaces
@@ -51,11 +51,14 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var test = await authService.GetAuthor(Id);
+        var response = await authService.GetAuthor(Id);
+        if(response.Success)
+            Id = response.Data.Id;
     }
 
     private async Task HandleUpdateAuthor(object o)
     {
+        Author.Id = Id;
         var response = await authService.EditAuthor(Id, Author);
         if (response.Success)
         {

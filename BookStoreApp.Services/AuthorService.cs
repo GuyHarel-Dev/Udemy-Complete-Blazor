@@ -63,7 +63,27 @@ namespace BookStoreApp.Services
 
         public async Task<Response<AuthorReadDto>> GetAuthor(int id)
         {
-            return new Response<AuthorReadDto>();
+            Response<AuthorReadDto> response;
+
+            try
+            {
+                var client = GetApiHttpClient();
+
+                await GetBearerToken();
+                var data = await client.AuthorsGETAsync(id);
+                response = new Response<AuthorReadDto>
+                {
+                    Data = new AuthorReadDto { Id = data.Id, FirstName = data.FirstName, LastName= data.LastName, Bio = data.Bio },
+                    Success = true
+                };
+
+            }
+            catch (ApiException ex)
+            {
+                response = ConvertApiException<AuthorReadDto>(ex);
+            }
+
+            return response;
         }
 
         public async Task<Response<List<AuthorReadDto>>> GetAuthors()
@@ -78,7 +98,7 @@ namespace BookStoreApp.Services
                 var data = await client.AuthorsAllAsync();
                 response = new Response<List<AuthorReadDto>>
                 {
-                    Data = data.Select( a => new AuthorReadDto { FirstName = a.FirstName, LastName = a.LastName, Bio = a.Bio}).ToList(),
+                    Data = data.Select( a => new AuthorReadDto { Id= a.Id, FirstName = a.FirstName, LastName = a.LastName, Bio = a.Bio}).ToList(),
                     Success = true
                 };
                

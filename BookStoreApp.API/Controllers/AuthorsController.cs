@@ -66,17 +66,19 @@ namespace BookStoreApp.API.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> PutAuthor(int id, AuthorCreateDto author)
+        public async Task<IActionResult> PutAuthor(int id, AuthorCreateDto authorCreateDto)
         {
-            if (id != author.Id)
+            if (id != authorCreateDto.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(author).State = EntityState.Modified;
-
             try
             {
+                var author = mapper.Map<Author>(authorCreateDto);
+                author.Id = id;
+
+                _context.Entry(author).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
