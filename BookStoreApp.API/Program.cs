@@ -78,4 +78,18 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.Use(async (context, next) =>
+{
+    // Ici, vous pouvez inspecter la requête entrante
+    var request = context.Request;
+    var path = request.Path;
+    var method = request.Method;
+    var queryString = request.QueryString;
+
+    // Logique de middleware ou de traitement de la requête
+
+    // Appel du prochain middleware dans la pipeline
+    await next();
+});
+
 app.Run();

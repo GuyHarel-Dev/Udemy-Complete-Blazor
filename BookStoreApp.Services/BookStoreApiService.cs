@@ -35,11 +35,11 @@ namespace BookStoreApp.Services
             return apiClient;
         }
 
-        public Response<Guid> ConvertApiException<Guid>(ApiException exception)
+        public Response<T> ConvertApiException<T>(ApiException exception)
         {
             if (exception != null && exception.StatusCode == 400)
             {
-                return new Response<Guid>()
+                return new Response<T>()
                 {
                     Message = "Validation errors have occured.",
                     ValidationErrors = exception.Response,
@@ -48,14 +48,14 @@ namespace BookStoreApp.Services
             }
             if (exception != null && exception.StatusCode == 404)
             {
-                return new Response<Guid>()
+                return new Response<T>()
                 {
                     Message = "The requested item could not be found.",
                     Success = false
                 };
             }
 
-            return new Response<Guid>()
+            return new Response<T>()
             {
                 Message = "Something went wrong.",
                 Success = false

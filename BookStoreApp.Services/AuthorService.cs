@@ -23,6 +23,25 @@ namespace BookStoreApp.Services
             this.factory = factory;
         }
 
+        public async Task<Response<int>> CreateAuthor(AuthorCreateDto authorCreateDto)
+        {
+            Response<int> response = new Response<int> {  Success = true };
+
+            try
+            {
+                var client = GetApiHttpClient();
+                await GetBearerToken();
+                await client.AuthorsPOSTAsync(authorCreateDto);
+                
+            }
+            catch (ApiException ex)
+            {
+                response = ConvertApiException<int>(ex);
+            }
+
+            return response;
+        }
+
         public async Task<Response<List<Author>>> GetAuthors()
         {
             Response<List<Author>> response;
