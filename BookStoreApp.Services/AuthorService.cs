@@ -42,9 +42,33 @@ namespace BookStoreApp.Services
             return response;
         }
 
-        public async Task<Response<List<Author>>> GetAuthors()
+        public async Task<Response<int>> EditAuthor(int id, AuthorCreateDto authorCreateDto)
         {
-            Response<List<Author>> response;
+            Response<int> response = new();
+
+            try
+            {
+                var client = GetApiHttpClient();
+                await GetBearerToken();
+                await client.AuthorsPUTAsync(id, authorCreateDto);
+
+            }
+            catch (ApiException ex)
+            {
+                response = ConvertApiException<int>(ex);
+            }
+
+            return response;
+        }
+
+        public async Task<Response<AuthorReadDto>> GetAuthor(int id)
+        {
+            return new Response<AuthorReadDto>();
+        }
+
+        public async Task<Response<List<AuthorReadDto>>> GetAuthors()
+        {
+            Response<List<AuthorReadDto>> response;
 
             try
             {
@@ -52,16 +76,16 @@ namespace BookStoreApp.Services
 
                 await GetBearerToken();
                 var data = await client.AuthorsAllAsync();
-                response = new Response<List<Author>>
+                response = new Response<List<AuthorReadDto>>
                 {
-                    Data = data.ToList(),
+                    Data = data.Select( a => new AuthorReadDto { FirstName = a.FirstName, LastName = a.LastName, Bio = a.Bio}).ToList(),
                     Success = true
                 };
                
             }
             catch (ApiException ex)
             {
-                response = ConvertApiException<List<Author>>(ex);
+                response = ConvertApiException<List<AuthorReadDto>>(ex);
             }
 
             return response;

@@ -40,7 +40,7 @@ else
                     <td>@author.LastName</td>
                     <td>
                         <a class="btn btn-primary" href="/authors/details"><span class="oi oi-book" aria-hidden="true"></span>Details</a>
-                        <a class="btn btn-warning" href="/authors/edit"><span class="oi oi-pencil" aria-hidden="true"></span>Edit</a>
+                        <a class="btn btn-warning" href="/authors/update"><span class="oi oi-pencil" aria-hidden="true"></span>Update</a>
                         <a class="btn btn-danger" href="/authors/delete"><span class="oi oi-delete" aria-hidden="true"></span>Delete</a>
                     </td>
                 </tr>
@@ -50,8 +50,8 @@ else
 }
 
 @code {
-    private ICollection<Author> Authors;
-    private Response<List<Author>> Response = new Response<List<Author>> { Success = true };
+    private ICollection<AuthorReadDto> Authors;
+    private Response<List<AuthorReadDto>> Response = new Response<List<AuthorReadDto>> { Success = true };
 
     protected override async Task OnInitializedAsync()
     {

@@ -66,7 +66,7 @@ namespace BookStoreApp.API.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> PutAuthor(int id, Author author)
+        public async Task<IActionResult> PutAuthor(int id, AuthorCreateDto author)
         {
             if (id != author.Id)
             {

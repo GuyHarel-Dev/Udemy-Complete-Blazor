@@ -71,12 +71,12 @@ namespace BookStoreApp.Services
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task AuthorsPUTAsync(int id, Author body);
+        System.Threading.Tasks.Task AuthorsPUTAsync(int id, AuthorCreateDto body);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task AuthorsPUTAsync(int id, Author body, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task AuthorsPUTAsync(int id, AuthorCreateDto body, System.Threading.CancellationToken cancellationToken);
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -589,7 +589,7 @@ namespace BookStoreApp.Services
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task AuthorsPUTAsync(int id, Author body)
+        public virtual System.Threading.Tasks.Task AuthorsPUTAsync(int id, AuthorCreateDto body)
         {
             return AuthorsPUTAsync(id, body, System.Threading.CancellationToken.None);
         }
@@ -597,7 +597,7 @@ namespace BookStoreApp.Services
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task AuthorsPUTAsync(int id, Author body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task AuthorsPUTAsync(int id, AuthorCreateDto body, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");

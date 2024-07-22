@@ -9,7 +9,9 @@ namespace BookStoreApp.Services.Interfaces
 {
     public interface IAuthorService
     {
-        Task<Response<List<Author>>> GetAuthors();
+        Task<Response<List<AuthorReadDto>>> GetAuthors();
+        Task<Response<AuthorReadDto>> GetAuthor(int id);
         Task<Response<int>> CreateAuthor(AuthorCreateDto authorCreateDto);
+        Task<Response<int>> EditAuthor(int id, AuthorCreateDto authorCreateDto);
     }
 }
