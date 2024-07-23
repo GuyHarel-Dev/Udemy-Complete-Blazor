@@ -1,0 +1,84 @@
+﻿@using BookStoreApp.Services
+
+@page "/users/register"
+
+@inject BookStoreApiClientFactory bookStoreApiHttpClientFactory
+@inject NavigationManager navManager
+
+<h3>Registration</h3>
+
+@if(!string.IsNullOrEmpty(message))
+{
+    <div class="alert alert-danger" >
+        <p>@message</p>
+    </div>
+}
+
+
+<EditForm Model="RegistrationModel" OnValidSubmit="HandleRegistration">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <InputText class="form-control" @bind-Value="RegistrationModel.Email" />
+        <ValidationMessage For="@(() => RegistrationModel.Email)" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="email">First Name</label>
+        <InputText class="form-control" @bind-Value="RegistrationModel.FirstName" />
+        <ValidationMessage For="@(() => RegistrationModel.FirstName)" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="email">Last Name</label>
+        <InputText class="form-control" @bind-Value="RegistrationModel.LastName" />
+        <ValidationMessage For="@(() => RegistrationModel.LastName)" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="email">Password</label>
+        <InputText class="form-control" type="password" @bind-Value="RegistrationModel.Password" />
+        <ValidationMessage For="@(() => RegistrationModel.Password)" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary btn-block">Register</button>
+
+</EditForm>
+
+@code {
+
+    UserDto RegistrationModel = new UserDto();
+    string message = string.Empty;
+
+
+    public Registration()
+    {
+        RegistrationModel.Email = "bibi@coco.com";
+        RegistrationModel.FirstName = "Bibi";
+        RegistrationModel.LastName = "DuPoux";
+        RegistrationModel.Password = "fWY0YB1D_0RdJJcZ";
+        //RegistrationModel.Role = "User";
+    }
+
+    public async Task HandleRegistration()
+    {
+        var bookStoreAppApiClient = bookStoreApiHttpClientFactory.CreateApiClient();
+        try
+        {
+            await bookStoreAppApiClient.RegisterAsync(RegistrationModel);
+            navManager.NavigateTo("/users/login");
+        }
+        catch (ApiException ex)
+        {
+            message = ex.Message;
+            // throw;
+        }
+        catch (Exception ex)
+        {
+            message = ex.Message;
+            // throw;
+        }
+
+    }
+}

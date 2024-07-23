@@ -1,0 +1,15 @@
+﻿@page "/users/logout"
+
+@using BookStoreApp.Services.Interfaces
+@inject IBookStoreApiService authService
+@inject NavigationManager navManager
+
+<h3>Logout</h3>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await authService.Logout();
+        navManager.NavigateTo("/");
+    }
+}
