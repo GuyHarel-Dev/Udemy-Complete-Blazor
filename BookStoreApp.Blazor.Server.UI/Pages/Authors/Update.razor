@@ -53,7 +53,13 @@
     {
         var response = await authService.GetAuthor(Id);
         if(response.Success)
-            Id = response.Data.Id;
+        {
+            var data = response.Data;
+            Author.FirstName = data.FirstName;
+            Author.LastName = data.LastName;
+            Author.Bio = data.Bio;
+        }
+
     }
 
     private async Task HandleUpdateAuthor(object o)
