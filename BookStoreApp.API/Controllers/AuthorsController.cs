@@ -50,7 +50,7 @@ namespace BookStoreApp.API.Controllers
 
         // GET: api/Authors/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Author>> GetAuthor(int id)
+        public async Task<ActionResult<AuthorReadDto>> GetAuthor(int id)
         {
             var author = await _context.Authors.FindAsync(id);
 
@@ -59,7 +59,10 @@ namespace BookStoreApp.API.Controllers
                 return NotFound();
             }
 
-            return author;
+            var authorDto = mapper.Map<AuthorReadDto>(author);
+
+
+            return Ok(authorDto);
         }
 
         // PUT: api/Authors/5

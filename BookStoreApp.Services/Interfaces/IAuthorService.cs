@@ -13,5 +13,7 @@ namespace BookStoreApp.Services.Interfaces
         Task<Response<AuthorReadDto>> GetAuthor(int id);
         Task<Response<int>> CreateAuthor(AuthorCreateDto authorCreateDto);
         Task<Response<int>> EditAuthor(int id, AuthorCreateDto authorCreateDto);
+        Task<Response<int>> DeleteAuthor(int id);
+
     }
 }

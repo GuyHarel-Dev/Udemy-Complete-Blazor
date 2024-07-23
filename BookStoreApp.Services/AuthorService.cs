@@ -42,6 +42,25 @@ namespace BookStoreApp.Services
             return response;
         }
 
+        public async Task<Response<int>> DeleteAuthor(int id)
+        {
+            Response<int> response = new Response<int> { Success = true };
+
+            try
+            {
+                var client = GetApiHttpClient();
+                await GetBearerToken();
+                await client.AuthorsDELETEAsync(id);
+
+            }
+            catch (ApiException ex)
+            {
+                response = ConvertApiException<int>(ex);
+            }
+
+            return response;
+        }
+
         public async Task<Response<int>> EditAuthor(int id, AuthorCreateDto authorCreateDto)
         {
             Response<int> response = new();
