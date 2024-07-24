@@ -1,6 +1,7 @@
 using BookStoreApp.API;
 using BookStoreApp.API.Configuration;
 using BookStoreApp.API.Data;
+using BookStoreApp.API.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -59,6 +60,10 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Key"]!)) // on vérifie que la clé utilisée pour signer le token est bien celle qu'on attend
     };
 });
+
+// Database
+builder.Services.AddScoped<IAuthorsRepository, AuthorsRepository>();
+builder.Services.AddScoped<IBooksRepository, BooksRepository>();
 
 var app = builder.Build();
 
