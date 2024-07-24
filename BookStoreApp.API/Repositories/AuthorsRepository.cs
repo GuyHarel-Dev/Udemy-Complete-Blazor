@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookStoreApp.API.Repositories
 {
-    public class AuthorsRepository : GenericRepository<Author, DbContext>, IAuthorsRepository
+    public class AuthorsRepository : GenericRepository<Author, BookStoreDbContext>, IAuthorsRepository
     {
-        public AuthorsRepository(DbContext dbContext) :  base(dbContext)
+        public AuthorsRepository(BookStoreDbContext dbContext) :  base(dbContext)
         {
 
         }

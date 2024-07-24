@@ -30,6 +30,11 @@ namespace BookStoreApp.API.Repositories
             await dbContext.SaveChangesAsync();
         }
 
+        public Task<bool> ExistAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<bool> Exists(int id)
         {
             var entity = await GetAsync(id);
