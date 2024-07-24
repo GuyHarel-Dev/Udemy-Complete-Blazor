@@ -4,6 +4,9 @@
         where T : class
     {
         Task<List<T>> GetAllAsync();
+        Task<VirtualizeResponse<TResult>> GetAllAsync<TTable, TResult>(QueryParameters queryParameters)
+            where TResult : class
+            where TTable : class;
         Task<T> GetAsync(int? id);
         Task<T> AddAsync(T entity);
         Task DeleteAsync(int id);

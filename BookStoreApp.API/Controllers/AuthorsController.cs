@@ -42,11 +42,36 @@ namespace BookStoreApp.API.Controllers
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "An error occurred while fetching authors");    
+                logger.LogError(ex, "An error occurred while fetching authors");
 
                 throw new BadHttpRequestException("An error occurred while fetching authors");
             }
- 
+
+        }
+
+        // GET: api/Authors
+        [HttpGet]
+        [Route("page")]
+        public async Task<ActionResult<VirtualizeResponse<AuthorReadDto>>> GetAuthorsPage([FromQuery] QueryParameters queryParameters)
+        {
+            try
+            {
+                //var faire = false;
+                //if (faire)
+                //{
+                //    await authorsRepository.CreerDonneesVirtualisation();
+                //}
+                var reponse = await authorsRepository.GetAllAsync<Author, AuthorReadDto>(queryParameters);
+
+                return Ok(reponse);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "An error occurred while fetching authors");
+
+                throw new BadHttpRequestException("An error occurred while fetching authors");
+            }
+
         }
 
         // GET: api/Authors/5
