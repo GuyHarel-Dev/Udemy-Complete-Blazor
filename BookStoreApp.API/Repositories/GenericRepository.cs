@@ -2,6 +2,7 @@
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using BookStoreApp.API.Data;
+using BookStoreApp.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookStoreApp.API.Repositories

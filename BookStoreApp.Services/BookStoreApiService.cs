@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Blazored.LocalStorage;
+using BookStoreApp.Models.User;
 using BookStoreApp.Services.Interfaces;
 using BookStoreApp.Services.Providers;
 using Microsoft.AspNetCore.Components.Authorization;

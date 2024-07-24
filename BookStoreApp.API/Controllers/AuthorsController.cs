@@ -10,6 +10,7 @@ using BookStoreApp.Models.Author;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using BookStoreApp.API.Repositories;
+using BookStoreApp.Models;
 
 namespace BookStoreApp.API.Controllers
 {
@@ -31,7 +32,7 @@ namespace BookStoreApp.API.Controllers
 
         // GET: api/Authors
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Author>>> GetAuthors()
+        public async Task<ActionResult<IEnumerable<AuthorReadDto>>> GetAuthors()
         {
             try
             {

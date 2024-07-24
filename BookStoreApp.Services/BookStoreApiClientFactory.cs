@@ -17,7 +17,9 @@ namespace BookStoreApp.Services
 
         public BookStoreAppApiClient CreateApiClient()
         {
-            return new BookStoreAppApiClient("https://localhost:7094", factory.CreateClient());
+            var client = factory.CreateClient();
+            client.BaseAddress = new Uri("https://localhost:7094");
+            return new BookStoreAppApiClient(client);
         }
     }
 }

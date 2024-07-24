@@ -1,4 +1,4 @@
-﻿namespace BookStoreApp.API.Repositories
+﻿namespace BookStoreApp.Models
 {
     public class VirtualizeResponse<T>
     {

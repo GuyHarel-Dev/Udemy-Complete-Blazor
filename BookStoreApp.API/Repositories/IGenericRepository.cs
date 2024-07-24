@@ -1,4 +1,6 @@
-﻿namespace BookStoreApp.API.Repositories
+﻿using BookStoreApp.Models;
+
+namespace BookStoreApp.API.Repositories
 {
     public interface IGenericRepository<T>
         where T : class

@@ -1,7 +1,5 @@
-﻿using Humanizer.Localisation.NumberToWords;
-using Microsoft.Build.Evaluation;
-
-namespace BookStoreApp.API.Repositories
+﻿
+namespace BookStoreApp.Models
 {
     public class QueryParameters
     {
