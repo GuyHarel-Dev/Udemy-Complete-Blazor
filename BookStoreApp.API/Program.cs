@@ -62,6 +62,7 @@ builder.Services.AddAuthentication(options =>
 });
 
 // Database
+builder.Services.AddScoped<DbContext>();
 builder.Services.AddScoped<IAuthorsRepository, AuthorsRepository>();
 builder.Services.AddScoped<IBooksRepository, BooksRepository>();
 

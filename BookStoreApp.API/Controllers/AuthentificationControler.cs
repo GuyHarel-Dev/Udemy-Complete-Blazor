@@ -14,14 +14,14 @@ namespace BookStoreApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthControler : ControllerBase
+    public class AuthentificationControler : ControllerBase
     {
-        private readonly ILogger<AuthControler> logger;
+        private readonly ILogger<AuthentificationControler> logger;
         private readonly IMapper mapper;
         private readonly UserManager<ApiUser> userManager;
         private readonly IConfiguration configuration;
 
-        public AuthControler(ILogger<AuthControler> logger, IMapper mapper, UserManager<ApiUser> userManager, IConfiguration configuration)
+        public AuthentificationControler(ILogger<AuthentificationControler> logger, IMapper mapper, UserManager<ApiUser> userManager, IConfiguration configuration)
         {
             this.logger = logger;
             this.mapper = mapper;

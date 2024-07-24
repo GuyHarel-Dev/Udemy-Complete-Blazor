@@ -213,8 +213,8 @@ namespace BookStoreApp.Services
 
                     var urlBuilder_ = new System.Text.StringBuilder();
                     if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-                    // Operation Path: "api/AuthControler/register"
-                    urlBuilder_.Append("api/AuthControler/register");
+                    // Operation Path: "api/AuthentificationControler/register"
+                    urlBuilder_.Append("api/AuthentificationControler/register");
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -290,8 +290,8 @@ namespace BookStoreApp.Services
 
                     var urlBuilder_ = new System.Text.StringBuilder();
                     if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-                    // Operation Path: "api/AuthControler/login"
-                    urlBuilder_.Append("api/AuthControler/login");
+                    // Operation Path: "api/AuthentificationControler/login"
+                    urlBuilder_.Append("api/AuthentificationControler/login");
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
