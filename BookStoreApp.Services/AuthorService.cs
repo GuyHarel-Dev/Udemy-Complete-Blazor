@@ -1,4 +1,5 @@
 ﻿using Blazored.LocalStorage;
+using BookStoreApp.Models;
 using BookStoreApp.Models.Author;
 using BookStoreApp.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -121,6 +122,31 @@ namespace BookStoreApp.Services
                     Success = true
                 };
                
+            }
+            catch (ApiException ex)
+            {
+                response = ConvertApiException<List<AuthorReadDto>>(ex);
+            }
+
+            return response;
+        }
+
+        public async Task<Response<List<AuthorReadDto>>> GetAuthorsPage(QueryParameters queryParameters)
+        {
+            Response<List<AuthorReadDto>> response;
+
+            try
+            {
+                var client = GetApiHttpClient();
+
+                await GetBearerToken();
+                var data = await client.PageAsync(queryParameters.StartIndex, queryParameters.PageSize);
+                response = new Response<List<AuthorReadDto>>
+                {
+                    Data = data.Items.Select(a => new AuthorReadDto { Id = a.Id, FirstName = a.FirstName, LastName = a.LastName, Bio = a.Bio }).ToList(),
+                    Success = true
+                };
+
             }
             catch (ApiException ex)
             {

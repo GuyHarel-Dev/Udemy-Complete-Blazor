@@ -2,11 +2,14 @@
 @using BookStoreApp.Models.Author
 @using BookStoreApp.Services
 @using BookStoreApp.Services.Interfaces
+@* @using BookStoreApp.Blazor.WebAssembly.UI.Pages.Authors *@
 
 @inject IAuthorService authService
 @inject IJSRuntime js
 
 <h3>Index</h3>
+
+<AuthorTable UnId="123"></AuthorTable>
 
 @if (Response.Success == false)
 {
@@ -57,6 +60,12 @@ else
     protected override async Task OnInitializedAsync()
     {
         Response = await authService.GetAuthors();
+        if (Response.Success)
+        {
+            Authors = Response.Data;
+        }
+
+        Response = await authService.GetAuthorsPage(new Models.QueryParameters { StartIndex = 10, PageSize = 20 });
         if (Response.Success)
         {
             Authors = Response.Data;

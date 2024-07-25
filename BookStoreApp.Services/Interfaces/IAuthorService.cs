@@ -1,4 +1,5 @@
-﻿using BookStoreApp.Models.Author;
+﻿using BookStoreApp.Models;
+using BookStoreApp.Models.Author;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace BookStoreApp.Services.Interfaces
 {
     public interface IAuthorService
     {
+        Task<Response<List<AuthorReadDto>>> GetAuthorsPage(QueryParameters queryParameters);
+
         Task<Response<List<AuthorReadDto>>> GetAuthors();
         Task<Response<AuthorReadDto>> GetAuthor(int id);
         Task<Response<int>> CreateAuthor(AuthorCreateDto authorCreateDto);

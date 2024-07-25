@@ -50,7 +50,7 @@ namespace BookStoreApp.API.Controllers
 
         }
 
-        // GET: api/Authors
+        // GET: api/Authors/page
         [HttpGet]
         [Route("page")]
         public async Task<ActionResult<VirtualizeResponse<AuthorReadDto>>> GetAuthorsPage([FromQuery] QueryParameters queryParameters)
