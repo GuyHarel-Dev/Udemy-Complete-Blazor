@@ -10,7 +10,7 @@ namespace BookStoreApp.Services.Interfaces
 {
     public interface IAuthorService
     {
-        Task<Response<List<AuthorReadDto>>> GetAuthorsPage(QueryParameters queryParameters);
+        Task<Response<VirtualizeResponse<AuthorReadDto>>> GetAuthorsPage(QueryParameters queryParameters);
 
         Task<Response<List<AuthorReadDto>>> GetAuthors();
         Task<Response<AuthorReadDto>> GetAuthor(int id);

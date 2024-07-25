@@ -56,13 +56,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        // Response = await authService.GetAuthors();
-        // if (Response.Success)
-        // {
-        //     Authors = Response.Data;
-        // }
-
-        Response = await authService.GetAuthorsPage(new Models.QueryParameters { StartIndex = 10, PageSize = 20 });
+        Response = await authService.GetAuthors();
         if (Response.Success)
         {
             Authors = Response.Data;

@@ -131,9 +131,9 @@ namespace BookStoreApp.Services
             return response;
         }
 
-        public async Task<Response<List<AuthorReadDto>>> GetAuthorsPage(QueryParameters queryParameters)
+        public async Task<Response<VirtualizeResponse<AuthorReadDto>>> GetAuthorsPage(QueryParameters queryParameters)
         {
-            Response<List<AuthorReadDto>> response;
+            Response<VirtualizeResponse<AuthorReadDto>> response;
 
             try
             {
@@ -141,16 +141,14 @@ namespace BookStoreApp.Services
 
                 await GetBearerToken();
                 var data = await client.PageAsync(queryParameters.StartIndex, queryParameters.PageSize);
-                response = new Response<List<AuthorReadDto>>
-                {
-                    Data = data.Items.Select(a => new AuthorReadDto { Id = a.Id, FirstName = a.FirstName, LastName = a.LastName, Bio = a.Bio }).ToList(),
-                    Success = true
-                };
+                response = new Response<VirtualizeResponse<AuthorReadDto>>();
+                response.Data = data;
+                response.Success = true;
 
             }
             catch (ApiException ex)
             {
-                response = ConvertApiException<List<AuthorReadDto>>(ex);
+                response = ConvertApiException<VirtualizeResponse<AuthorReadDto>>(ex);
             }
 
             return response;
